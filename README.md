@@ -1,2 +1,2 @@
-# pymar2024
-Python test automation course
+# Valeria Kudelko
+Homework3.Python test automation course
