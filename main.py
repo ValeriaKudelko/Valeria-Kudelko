@@ -1,4 +1,11 @@
-def main():
+"""Main module"""
+
+
+def main() -> None:
+    """
+    Function to print Hello world!
+    :return: None
+    """
     print("Hello world!")
 
 
