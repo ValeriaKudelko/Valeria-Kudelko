@@ -10,9 +10,9 @@ print(arr)
 
 # !2."I love arrays they are my favorite" => ["I", "love", "arrays",
 # "they", "are", "my", "favorite"].
-convert_text = "I love arrays they are my favorite"
-print(convert_text)
-arr1 = convert_text.split()
+rrt = "I love arrays they are my favorite"
+print(rrt)
+arr1 = rrt.split()
 print(arr1)
 
 
@@ -22,8 +22,8 @@ name = ["Ivan", "Ivanou"]
 print(name)
 locations = "Minsk", "Belarus"
 print(locations)
-text_printing = "Привет, {} {}! Добро пожаловать в {} {}".format(*name, *locations)
-print(text_printing)
+txt = "Привет, {} {}! Добро пожаловать в {} {}".format(*name, *locations)
+print(txt)
 
 
 # !4.Дан список ["I", "love", "arrays", "they", "are", "my", "favorite"]
@@ -31,8 +31,8 @@ print(text_printing)
 # "I love arrays they are my favorite".
 ml1 = ["I", "love", "arrays", "they", "are", "my", "favorite"]
 print(ml1)
-make_with_line = " ".join(ml1)
-print(make_with_line)
+gr = " ".join(ml1)
+print(gr)
 
 
 # !5.Создайте список из 10 элементов, вставьте на 3-ю позицию новое
