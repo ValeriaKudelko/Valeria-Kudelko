@@ -1,7 +1,7 @@
 """Writing Python Code."""
 
 # 1.Перевести строку в список "Robin Singh" => ["Robin”, “Singh"].
-zu1 = list()
+zu1 = []
 zu1 = list("Robin Singh")
 print(zu1)
 arr = "Robin Singh".split()
