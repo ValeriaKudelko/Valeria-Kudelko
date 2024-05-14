@@ -1,18 +1,15 @@
 """Writing Python Code."""
 
 # 1.Перевести строку в список "Robin Singh" => ["Robin”, “Singh"].
-zu1 = []
-zu1 = list("Robin Singh")
+zu1 = ["Robin Singh"]
 print(zu1)
-arr = "Robin Singh".split()
-print(arr)
 
 
 # !2."I love arrays they are my favorite" => ["I", "love", "arrays",
 # "they", "are", "my", "favorite"].
-rrt = "I love arrays they are my favorite"
-print(rrt)
-arr1 = rrt.split()
+convertText = "I love arrays they are my favorite"
+print(convertText)
+arr1 = convertText.split()
 print(arr1)
 
 
@@ -22,8 +19,8 @@ name = ["Ivan", "Ivanou"]
 print(name)
 locations = "Minsk", "Belarus"
 print(locations)
-txt = "Привет, {} {}! Добро пожаловать в {} {}".format(*name, *locations)
-print(txt)
+messageTxt = "Привет, {} {}! Добро пожаловать в {} {}".format(*name, *locations)
+print(messageTxt)
 
 
 # !4.Дан список ["I", "love", "arrays", "they", "are", "my", "favorite"]
@@ -31,8 +28,8 @@ print(txt)
 # "I love arrays they are my favorite".
 ml1 = ["I", "love", "arrays", "they", "are", "my", "favorite"]
 print(ml1)
-gr = " ".join(ml1)
-print(gr)
+ml2 = " ".join(ml1)
+print(ml2)
 
 
 # !5.Создайте список из 10 элементов, вставьте на 3-ю позицию новое
