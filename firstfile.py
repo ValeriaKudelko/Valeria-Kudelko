@@ -3,8 +3,8 @@
 # pylint: disable=invalid-name
 
 # !1.Заменить символ “#” на символ “/” в строке 'www.my_site.com#about'.
-replaceСharacter = 'www.my_site.com#about'.replace('#', '/')
-print(replaceСharacter)
+line1 = 'www.my_site.com#about'.replace('#', '/')
+print(line1)
 
 
 # !2.Напишите программу, которая добавляет ‘ing’ к словам.
