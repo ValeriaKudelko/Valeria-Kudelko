@@ -1,5 +1,7 @@
 """Writing Python Code."""
 
+# pylint: disable=invalid-name
+
 # 1.Перевести строку в список "Robin Singh" => ["Robin”, “Singh"].
 zu1 = ["Robin Singh"]
 print(zu1)
