@@ -96,8 +96,9 @@ def is_valid_credit_card(card_number):
     al = sum(digits[-1::-2] + [sum(divmod(2 * d, 10)) for d in digits[-2::-2]])
     return al % 10 == 0
 
-card_number = input("Введите номер кредитной карты: ")
-if is_valid_credit_card(card_number):
+
+number_from_the_card = input("Введите номер кредитной карты: ")
+if is_valid_credit_card(number_from_the_card):
     print("Номер карты соответствует.")
 else:
     print("Номер карты не соответствует.")
