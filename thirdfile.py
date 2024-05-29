@@ -1,3 +1,6 @@
+"""
+Homework
+"""
 # Быки и коровы.
 # В классическом варианте игра рассчитана на двух игроков. Каждый
 # из игроков задумывает и записывает тайное 4-значное число с неповторяющимися
@@ -20,6 +23,7 @@
 
 import random
 
+
 def generate_secret_number():
     """
     Game with user.
@@ -28,17 +32,25 @@ def generate_secret_number():
     random.shuffle(digits)
     return ''.join(digits[:4])
 
+
 def check_guess(secret, guess):
+    """
+    Check the combination and return the number of cows and bulls.
+    """
     bulls = 0
     cows = 0
-    for i in range(4):
-        if guess[i] == secret[i]:
+    for n in range(4):
+        if guess[n] == secret[n]:
             bulls += 1
-        elif guess[i] in secret:
+        elif guess[n] in secret:
             cows += 1
     return bulls, cows
 
+
 def main():
+    """
+    Game loop
+    """
     secret_number = generate_secret_number()
     print("Я загадал 4-х значное число. Попробуйте отгадать его!")
     attempts = 0
@@ -57,6 +69,7 @@ def main():
             print(f"Вы отгадали число {secret_number} за {attempts} попыток.")
             break
 
+
 if __name__ == "__main__":
     main()
 
@@ -66,15 +79,15 @@ if __name__ == "__main__":
 # напечатав N рядов звездочек, где верхний ряд имеет одну звездочку в центре,
 # а каждый последующий ряд имеет две дополнительные звездочки с каждой стороны.
 # Вот как это выглядит, когда N равно 3.
-#   *  
-#  *** 
+#   *
+#  ***
 # *****
 # Вот как это выглядит, когда N равно 5.
-#     *    
-#    ***   
-#   ***** 
-#  ******* 
-# ********* 
+#     *
+#    ***
+#   *****
+#  *******
+# *********
 # Необходимо написать программу, которая генерирует такую пирамиду пирамиду
 # со значением N,равным 10.
 
@@ -82,29 +95,30 @@ def print_art_pyramid(n):
     """
     Pyramid seal.
     """
-    for i in range(1, n+1):
-        spaces = n - i
+    for k in range(1, n+1):
+        spaces = n - k
         print(" " * spaces, end="")
-        print("*" * (2 * i - 1))
+        print("*" * (2 * k - 1))
+
 
 print_art_pyramid(10)
 
 
 # Статуи.
-# Вы получили в подарок на день рождения статуи разных размеров, 
+# Вы получили в подарок на день рождения статуи разных размеров,
 # каждая статуя имеет неотрицательный целочисленный размер. Поскольку Вам
 # нравится доводить вещи до совершенства, то необходимо расположить их от
-# меньшего к большему, чтобы каждая статуя была больше предыдущей ровно 
+# меньшего к большему, чтобы каждая статуя была больше предыдущей ровно
 # на 1. Для этого Вам могут понадобиться дополнительные статуи.
 # Определите количество отсутствующих статуй.
-# Пример: 
+# Пример:
 # Для статуй = [6, 2, 3, 8] результат должен быть = 3. Иными словами,
 # у Вас отсутствуют статуи размеров 4, 5 и 7.
 
 statues = [6, 2, 3, 8]
 statues.sort()
 missing_statues = 0
-for i in range(len(statues) - 1):
-    missing_statues += statues[i + 1] - statues[i] - 1
+for c in range(len(statues) - 1):
+    missing_statues += statues[c + 1] - statues[c] - 1
 
 print(missing_statues)
