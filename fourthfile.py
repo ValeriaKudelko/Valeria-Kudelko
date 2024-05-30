@@ -60,10 +60,10 @@ print(solution([40, 50, 60, 10, 20, 30]))
 # Примеры
 # Для n = 10 и first_number = 2 вывод должен быть (n, first_number) = 7.
 
-n = 10
-first_number = 2
-opposite_number = (first_number + n // 2) % n
-print(opposite_number)
+n = 10 # pylint: disable=C0103
+first_number = 2 # pylint: disable=C0103
+opposite_number = (first_number + n // 2) % n # pylint: disable=C0103
+print(opposite_number) # pylint: disable=C0103
 
 
 # Validate.
