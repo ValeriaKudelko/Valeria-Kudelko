@@ -89,6 +89,7 @@ main()
 # Необходимо написать программу, которая генерирует такую пирамиду пирамиду
 # со значением N,равным 10.
 
+
 def print_art_pyramid(n):
     """
     Pyramid seal.
@@ -123,6 +124,6 @@ def find_missing_statues(statues):
     return missing_count
 
 
-statues = [6, 2, 3, 8]
-result = find_missing_statues(statues)
+quantity_statues = [6, 2, 3, 8]
+result = find_missing_statues(quantity_statues)
 print(result)
