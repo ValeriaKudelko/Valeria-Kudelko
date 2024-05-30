@@ -22,8 +22,6 @@ Homework
 # solution([1, 2, 3, 4, 5, 3, 5, 6])
 # solution([40, 50, 60, 10, 20, 30])
 
-# pylint: disable=invalid-name
-
 
 def solution(nums):
     """
