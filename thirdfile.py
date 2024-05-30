@@ -70,9 +70,7 @@ def main():
             break
 
 
-if __name__ == "__main__":
-    main()
-
+main()
 
 # Пирамида.
 # Мы можем визуализировать художественную пирамиду ASCII с N уровнями,
@@ -115,10 +113,16 @@ print_art_pyramid(10)
 # Для статуй = [6, 2, 3, 8] результат должен быть = 3. Иными словами,
 # у Вас отсутствуют статуи размеров 4, 5 и 7.
 
-statues = [6, 2, 3, 8]
-statues.sort()
-missing_statues = 0
-for c in range(len(statues) - 1):
-    missing_statues += statues[c + 1] - statues[c] - 1
+def find_missing_statues(statues):
+    """
+    Finding the number of missing statues.
+    """
+    min_size = min(statues)
+    max_size = max(statues)
+    missing_count = max_size - min_size - len(statues) + 1
+    return missing_count
 
-print(missing_statues)
+
+statues = [6, 2, 3, 8]
+result = find_missing_statues(statues)
+print(result)
