@@ -1,2 +1,2 @@
-# Valeria Kudelko
-Homework3.Python test automation course
+Valeria Kudelko
+Homework.Python test automation course
