@@ -11,9 +11,3 @@ reports=no
 
 [BASIC]
 good-names=False
-
-[TYPECHECK]
-ignore-missing-imports=True
-
-[MASTER]
-extends = disabled=unrecognized-option,
