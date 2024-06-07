@@ -30,7 +30,8 @@ def letter_counting(string_one: str) -> str:
     return ''.join(result_one)
 
 
-# Example: "abcde" == "abcde"
-string_exam = "abcde"
-conclusion = letter_counting(string_exam)
-print(f"'{string_exam}' == '{conclusion}'")
+assert letter_counting("cccbba") == "c3b2a"
+assert letter_counting("abeehhhhhccced") == "abe2h5c3ed"
+assert letter_counting("aaabbceedd") == "a3b2ce2d2"
+assert letter_counting("abcde") == "abcde"
+assert letter_counting("aaabbdefffff") == "a3b2def5"
