@@ -1,0 +1,16 @@
+[MESSAGES CONTROL]
+disable=
+    attribute-defined-outside-init,
+    invalid-name,
+    missing-docstring,
+    protected-access,
+    too-few-public-methods,
+
+[REPORTS]
+reports=no
+
+[BASIC]
+good-names=False
+
+[TYPECHECK]
+ignore-missing-imports=True
