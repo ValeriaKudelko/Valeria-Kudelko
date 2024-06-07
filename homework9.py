@@ -25,8 +25,8 @@ def delete_character(string):
     return "".join(result)
 
 
-assert delete_character("a#bc#d")  # True
-assert delete_character("abc#d##c")  # True
-# assert delete_character("abc##d######")  # AssertionError
-assert delete_character("#######")  # True
-# assert delete_character("")  # AssertionError
+assert delete_character("a#bc#d")
+assert delete_character("abc#d##c")
+assert not delete_character("abc##d######")
+assert delete_character("#######")
+assert not delete_character("")
