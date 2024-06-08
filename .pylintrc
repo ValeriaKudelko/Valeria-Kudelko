@@ -1,0 +1,14 @@
+[MESSAGES CONTROL]
+disable=
+    attribute-defined-outside-init,
+    invalid-name,
+    missing-docstring,
+    protected-access,
+    too-few-public-methods,
+    redefined-builtin,
+
+[REPORTS]
+reports=no
+
+[BASIC]
+good-names=False
