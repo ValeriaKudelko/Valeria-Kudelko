@@ -36,11 +36,11 @@ def cache(func):
     cache_save = {}
 
     @wraps(func)
-    def wrapper(*args, **kwargs):
-        key = tuple(args) + tuple(kwargs.items())
-        if key not in cache_save:
-            cache_save[key] = func(*args, **kwargs)
-        return cache_save[key]
+    def wrapper(arg):
+        if arg in cache_save:
+            return cache_save[arg]
+        cache_save[arg] = func(arg)
+        return cache_save[arg]
     return wrapper
 
 
