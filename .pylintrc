@@ -13,3 +13,6 @@ reports=no
 
 [BASIC]
 good-names=False
+
+[DESIGN]
+max-args=7
