@@ -13,7 +13,7 @@ class Book:
     """
     Class library.
     """
-    def __init__(self, title, author, pages, isbn, reserved=False, borrowed_by=None):
+    def __init__(self, title, author, pages, isbn, reserved=False, borrowed_by=None):  # noqa: E501
         self.title = title
         self.author = author
         self.pages = pages
