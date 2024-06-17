@@ -11,32 +11,16 @@ Homework.
 
 class Book:
     """
-    Сlass library.
+    Class library.
     """
-    def __init__(self, title, author, page_count, isbn):
+    def __init__(self, title, author,
+                 pages, isbn, reserved=False, borrowed_by=None):
         self.title = title
         self.author = author
-        self.page_count = page_count
+        self.pages = pages
         self.isbn = isbn
-        self.reserved = False
-
-    def reserve(self):
-        """
-        Reservation.
-        """
-        self.reserved = True
-
-    def unreserve(self):
-        """
-        Removed from reservation.
-        """
-        self.reserved = False
-
-    def is_reserved(self):
-        """
-        In use by another reader.
-        """
-        return self.reserved
+        self.reserved = reserved
+        self.borrowed_by = borrowed_by
 
 
 class User:
@@ -45,31 +29,53 @@ class User:
     """
     def __init__(self, name):
         self.name = name
+        self.books = []
 
     def borrow_book(self, book):
         """
-        Book reservation.
+        Takes books.
         """
-        if book.is_reserved():
-            print(f"{self.name}, the book is already reserved.")
+        if book.borrowed_by is not None:
+            print(f"Книгу '{book.title}' взял {book.borrowed_by.name}.")
         else:
-            print(f"{self.name} borrowed '{book.title}'.")
-            book.reserve()
+            book.borrowed_by = self
+            self.books.append(book)
+            print(f"{self.name} взял книгу '{book.title}'.")
 
     def return_book(self, book):
         """
         Return of books.
         """
-        print(f"{self.name} returned '{book.title}'.")
-        book.unreserve()
+        if book in self.books:
+            book.borrowed_by = None
+            self.books.remove(book)
+            print(f"{self.name} вернул книгу '{book.title}'.")
+        else:
+            print(f"{self.name} не брал книгу '{book.title}'.")
+
+    def reserve_book(self, book):
+        """
+        Book reservation.
+        """
+        if book.reserved:
+            print(f"Книга '{book.title}' зарезервирована другим читателем.")
+        else:
+            book.reserved = True
+            book.reserved_by = self
+            print(f"{self.name} зарезервировал книгу '{book.title}'.")
 
 
 book1 = Book("Mы", "Девид Николс", 292, "978-5-389-08539-8")
 book2 = Book("Я", "Александр Потемкин", 249, "5-902377-10-2")
 user1 = User("Mike")
 user2 = User("Bob")
+
+user1.reserve_book(book1)
 user1.borrow_book(book1)
 user2.borrow_book(book1)
-user2.borrow_book(book2)
+user2.reserve_book(book1)
+user2.borrow_book(book1)
 user1.return_book(book1)
-user2.return_book(book2)
+user2.return_book(book1)
+user2.borrow_book(book1)
+user2.return_book(book1)
