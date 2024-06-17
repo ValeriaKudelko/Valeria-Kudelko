@@ -16,3 +16,6 @@ good-names=False
 
 [DESIGN]
 max-args=7
+
+[FORMAT]
+max-line-length=150
