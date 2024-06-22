@@ -11,11 +11,8 @@ disable=
 [REPORTS]
 reports=no
 
-[BASIC]
-good-names=False
-
 [DESIGN]
 max-args=7
 
 [FORMAT]
-max-line-length=150
+max-line-length=170
