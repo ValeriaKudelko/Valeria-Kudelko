@@ -67,8 +67,7 @@ class CardsDeck:
         """
         if 1 <= card_number <= len(self.deck):
             return self.deck[card_number - 1]
-        else:
-            return "Joker"
+        return "Joker"
 
 
 deck = CardsDeck()
