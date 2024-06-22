@@ -99,7 +99,7 @@ class Bank:
         if not target_currency:
             target_currency = 'BYN'
 
-        converted_amount, converted_currency = self.currency_converter.convert_to_byn(amount, source_currency)   # pylint: disable=unused-variable
+        converted_amount, converted_currency = self.currency_converter.convert_to_byn(amount, source_currency)   # pylint: disable=unused-variable # noqa: E501
         target_exchange_rate = self.currency_converter.exchange_rates.get(target_currency, 1.0)  # pylint: disable=line-too-long  # noqa: E501
         final_amount = converted_amount / target_exchange_rate
         return final_amount, target_currency
