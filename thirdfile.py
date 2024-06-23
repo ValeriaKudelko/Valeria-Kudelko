@@ -94,7 +94,7 @@ def print_art_pyramid(n):
     """
     Pyramid seal.
     """
-    for k in range(1, n+1):
+    for k in range(1, n + 1):
         spaces = n - k
         print(" " * spaces, end="")
         print("*" * (2 * k - 1))

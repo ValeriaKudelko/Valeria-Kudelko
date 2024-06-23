@@ -33,9 +33,7 @@ def typed(type):
         @wraps(func)
         def wrapper(*args, **kwargs):
             args = list(map(lambda arg: convert_val(arg, type), args))
-            kwargs = {
-                key: convert_val(value, type) for key, value in kwargs.items()
-                }
+            kwargs = {key: convert_val(value, type) for key, value in kwargs.items()}  # noqa: E501
             return func(*args, **kwargs)
         return wrapper
     return decorator
