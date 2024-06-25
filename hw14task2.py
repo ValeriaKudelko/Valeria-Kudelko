@@ -14,21 +14,37 @@ Homework.
 # ~ 2 ** 3 - 1 7
 
 
-def calculate_expression(expression):
+def engineering_calculator():
     """
-    Evaluates a mathematical expression.
+    Calculate a mathematical expression.
     """
-    try:
-        result = eval(expression)  # pylint: disable=eval-used
-        return result
-    except ZeroDivisionError:
-        return "Нельзя делить на ноль!"
-    except TypeError:
-        return f"Ошибка: {str}"
+    operators = {
+        '+': lambda x, y: x + y,
+        '-': lambda x, y: x - y,
+        '*': lambda x, y: x * y,
+        '/': lambda x, y: x / y,
+        '**': lambda x, y: x ** y
+    }
+    while True:
+        try:
+            user_input = input("~ ")
+            if user_input.lower() == "exit":
+                break
+            tokens = user_input.split()
+            if len(tokens) < 3 or len(tokens) % 2 == 0:
+                raise ValueError("Invalid input")
+            result = float(tokens[0])
+            for i in range(1, len(tokens) - 1, 2):
+                operator = tokens[i]
+                operand = float(tokens[i + 1])
+                if operator not in operators:
+                    raise ValueError("Unknown operator")
+                result = operators[operator](result, operand)
+            print(f"{result}\n")
+        except ValueError as e:
+            print(f"Error: {e}\n")
+        except ZeroDivisionError:
+            print("Division by zero is not allowed.\n")
 
 
-while True:
-    user_input = input("~ ")
-    if user_input.lower() == "q":
-        break
-    print(calculate_expression(user_input))
+engineering_calculator()
