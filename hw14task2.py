@@ -14,37 +14,62 @@ Homework.
 # ~ 2 ** 3 - 1 7
 
 
-def engineering_calculator():
+def engineering_calculator(expression):
     """
     Calculate a mathematical expression.
     """
-    operators = {
-        '+': lambda x, y: x + y,
-        '-': lambda x, y: x - y,
-        '*': lambda x, y: x * y,
-        '/': lambda x, y: x / y,
-        '**': lambda x, y: x ** y
-    }
-    while True:
-        try:
-            user_input = input("~ ")
-            if user_input.lower() == "exit":
-                break
-            tokens = user_input.split()
-            if len(tokens) < 3 or len(tokens) % 2 == 0:
-                raise ValueError("Invalid input")
-            result = float(tokens[0])
-            for i in range(1, len(tokens) - 1, 2):
-                operator = tokens[i]
-                operand = float(tokens[i + 1])
-                if operator not in operators:
-                    raise ValueError("Unknown operator")
-                result = operators[operator](result, operand)
-            print(f"{result}\n")
-        except ValueError as e:
-            print(f"Error: {e}\n")
-        except ZeroDivisionError:
-            print("Division by zero is not allowed.\n")
+    try:
+        tokens = expression.split()
+        numbers = []
+        operators = []
+        for token in tokens:
+            if token.isdigit():
+                numbers.append(int(token))
+            elif token in ['+', '-', '*', '/', '**', '^']:
+                operators.append(token)
+            else:
+                raise ValueError("Invalid token")
+
+        i = 0
+        while i < len(operators):
+            if operators[i] in ['*', '**', '^']:
+                if operators[i] == '*':
+                    numbers[i] *= numbers[i + 1]
+                elif operators[i] == '**' or operators[i] == '^':
+                    numbers[i] **= numbers[i + 1]
+                del numbers[i + 1]
+                del operators[i]
+            else:
+                i += 1
+
+        i = 0
+        while i < len(operators):
+            if operators[i] == '/':
+                if numbers[i + 1] == 0:
+                    raise ZeroDivisionError("Division by zero")
+                numbers[i] /= numbers[i + 1]
+                del numbers[i + 1]
+                del operators[i]
+            else:
+                i += 1
+
+        result = numbers[0]
+        for num, op in zip(numbers[1:], operators):
+            if op == '+':
+                result += num
+            elif op == '-':
+                result -= num
+        return result
+    except ZeroDivisionError as e:
+        return str(e)
+    except ValueError as e:
+        return str(e)
 
 
-engineering_calculator()
+while True:
+    user_input = input("~ ")
+    if user_input.lower() == "exit":
+        break
+
+    conclusion = engineering_calculator(user_input)
+    print(conclusion)
