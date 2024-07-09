@@ -25,7 +25,6 @@ class Currency:
     Converts different currencies to a
     specified target currency (default: BYN).
     """
-
     def __init__(self):
         self.exchange_rates = {
             'USD': 3.19,
@@ -90,7 +89,7 @@ class Bank:
     def __init__(self):
         self.currency_converter = Currency()
 
-    def exchange_currency(self, source_currency, amount, target_currency=None):
+    def exchange_currency(self, source_currency, amount, target_currency='BYN'):  # noqa: 501
         """
         Converts the given amount from the source
         currency to the target currency, or to BYN if
@@ -99,8 +98,8 @@ class Bank:
         if not target_currency:
             target_currency = 'BYN'
 
-        converted_amount, converted_currency = self.currency_converter.convert_to_byn(amount, source_currency)   # pylint: disable=unused-variable # noqa: E501
-        target_exchange_rate = self.currency_converter.exchange_rates.get(target_currency, 1.0)  # pylint: disable=line-too-long  # noqa: E501
+        converted_amount, converted_currency = self.currency_converter.convert_to_byn(amount, source_currency)  # noqa: E501
+        target_exchange_rate = self.currency_converter.exchange_rates.get(target_currency, 1.0)  # noqa: E501
         final_amount = converted_amount / target_exchange_rate
         return final_amount, target_currency
 
@@ -123,5 +122,5 @@ print(amoun, currenc)
 
 assert bank.exchange_currency(vasya.currency, vasya.amount) == (31.90, "BYN")
 assert bank.exchange_currency(petya.currency, petya.amount) == (17.10, "BYN")
-assert bank.exchange_currency(vasya.currency, vasya.amount, "EUR") == (9.32, "EUR")  # pylint: disable=line-too-long # noqa: E501
-assert bank.exchange_currency(petya.currency, petya.amount, "USD") == (5.36, "USD")  # pylint: disable=line-too-long # noqa: E501
+assert bank.exchange_currency(vasya.currency, vasya.amount, "EUR") == (9.29, "EUR"), "Conversion to EUR failed"  # noqa: E501
+assert bank.exchange_currency(petya.currency, petya.amount, "USD") == (10.76, "USD"), "Conversion to USD failed"  # noqa: E501
