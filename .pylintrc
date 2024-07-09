@@ -8,6 +8,7 @@ disable=
     redefined-builtin,
     line-too-long,
     unspecified-encoding,
+    unused-variable,
 
 [REPORTS]
 reports=no
