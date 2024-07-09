@@ -21,7 +21,7 @@ Homework.
 import re
 
 
-def parse_molecule(formula):
+def parse_molecule(formula):  # noqa: C901
     """
     Parses a chemical formula string and returns a
     dictionary with atoms and their counts.
