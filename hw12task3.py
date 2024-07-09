@@ -23,21 +23,58 @@ import re
 
 def parse_molecule(formula):
     """
-    Parses a chemical formula and returns a
-    dictionary of the atoms and their counts.
+    Parses a chemical formula string and returns a
+    dictionary with atoms and their counts.
     """
-    formula = formula.replace(" ", "")
-    pattern = r"([A-Z][a-z]*)([0-9]*)"
-    matches = re.findall(pattern, formula)
-    atoms = {}
-    for match in matches:
-        atom = match[0]
-        count = int(match[1]) if match[1] else 1
-        atoms[atom] = atoms.get(atom, 0) + count
-    return atoms
+    def multiply_dict(d, factor):
+        return {atom: count * factor for atom, count in d.items()}
+
+    def merge_dicts(d1, d2):
+        result = d1.copy()
+        for atom, count in d2.items():
+            if atom in result:
+                result[atom] += count
+            else:
+                result[atom] = count
+        return result
+
+    def parse_group(group):
+        group_dict = {}
+        for match in re.finditer(r'([A-Z][a-z]*)(\d*)', group):
+            atom, count = match.groups()
+            count = int(count) if count else 1
+            group_dict[atom] = count
+        return group_dict
+
+    stack = []
+    current_group = {}
+    i = 0
+
+    while i < len(formula):
+        char = formula[i]
+        if char == '(' or char == '[' or char == '{':
+            stack.append(current_group)
+            current_group = {}
+            i += 1
+        elif char == ')' or char == ']' or char == '}':
+            factor = int(formula[i + 1]) if i + 1 < len(formula) and formula[i + 1].isdigit() else 1  # noqa: 501
+            current_group = multiply_dict(current_group, factor)
+            prev_group = stack.pop()
+            current_group = merge_dicts(prev_group, current_group)
+            i += 2
+        else:
+            group_match = re.match(r'([A-Z][a-z]*)(\d*)', formula[i:])
+            if group_match:
+                atom, count = group_match.groups()
+                count = int(count) if count else 1
+                current_group[atom] = count
+                i += len(group_match.group())
+            else:
+                raise ValueError(f"Invalid character at position {i}: {char}")
+
+    return current_group
 
 
-formulas = ["H2O", "Mg(OH)2", "K4[ON(SO3)2]2"]
-for formul in formulas:
-    atomy = parse_molecule(formul)
-    print(f"{formul} -> {atomy}")
+print(parse_molecule("H2O"))
+print(parse_molecule("Mg(OH)2"))
+print(parse_molecule("K4[ON(SO3)2]2"))
