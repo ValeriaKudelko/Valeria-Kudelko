@@ -37,7 +37,8 @@ class Card:
     """
     Contains a list of card numbers and a list of suits.
     """
-    number_list = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace', 'Joker', 'Joker']  # noqa: E501
+    number_list = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack',
+                   'Queen', 'King', 'Ace', 'Joker']
     mast_list = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 
     def __init__(self, number, mast):
@@ -53,7 +54,9 @@ class CardsDeck:
     Contains an entire deck of cards.
     """
     def __init__(self):
-        self.deck = [Card(number, mast) for number in Card.number_list for mast in Card.mast_list]  # noqa: E501
+        self.deck = [Card(number, mast) for number in Card.number_list for mast in Card.mast_list]  # noqa: 501
+        self.deck.append(Card("Joker", "black"))
+        self.deck.append(Card("Joker", "red"))
 
     def shuffle(self):
         """
@@ -67,6 +70,7 @@ class CardsDeck:
         """
         if 1 <= card_number <= len(self.deck):
             return self.deck[card_number - 1]
+        return "Invalid card number"
 
 
 deck = CardsDeck()
