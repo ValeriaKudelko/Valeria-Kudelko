@@ -6,9 +6,15 @@ disable=
     protected-access,
     too-few-public-methods,
     redefined-builtin,
+    line-too-long,
+    unspecified-encoding,
 
 [REPORTS]
 reports=no
 
-[BASIC]
-good-names=False
+[DESIGN]
+max-args=7
+max-branches=18
+
+[FORMAT]
+max-line-length=200
