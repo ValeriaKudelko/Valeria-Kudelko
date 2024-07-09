@@ -7,12 +7,14 @@ disable=
     too-few-public-methods,
     redefined-builtin,
     line-too-long,
+    unspecified-encoding,
 
 [REPORTS]
 reports=no
 
 [DESIGN]
 max-args=7
+max-branches=18
 
 [FORMAT]
-max-line-length=170
+max-line-length=200
