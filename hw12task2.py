@@ -40,38 +40,6 @@ class Currency:
         return converted_amount, "BYN"
 
 
-class Deposit:
-    """
-    Displays the contribution by amount and term.
-    """
-    def __init__(self, amount, period, currency):
-        self.amount = amount
-        self.period = period
-        self.currency = currency
-        self.rate = 0.1
-
-    def calculate_interest(self):
-        """
-        Calculates monthly interest on deposits.
-        """
-        interest = self.amount * self.rate / 12
-        return interest
-
-    def apply_interest(self):
-        """
-        Adds the calculated interest to the deposit amount.
-        """
-        self.amount += self.calculate_interest()
-
-    def get_total(self):
-        """
-        Interest capitalization and return of the final deposit amount.
-        """
-        for _ in range(self.period * 12):
-            self.apply_interest()
-        return self.amount
-
-
 class Person:
     """
     A person who has a certain amount of a certain currency.
