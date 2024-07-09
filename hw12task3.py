@@ -52,11 +52,11 @@ def parse_molecule(formula):
 
     while i < len(formula):
         char = formula[i]
-        if char == '(' or char == '[' or char == '{':
+        if char in ('(', '[', '{'):
             stack.append(current_group)
             current_group = {}
             i += 1
-        elif char == ')' or char == ']' or char == '}':
+        elif char in (')', ']', '}'):
             factor = int(formula[i + 1]) if i + 1 < len(formula) and formula[i + 1].isdigit() else 1  # noqa: 501
             current_group = multiply_dict(current_group, factor)
             prev_group = stack.pop()
