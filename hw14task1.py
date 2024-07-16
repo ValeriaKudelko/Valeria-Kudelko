@@ -12,6 +12,7 @@ Homework.
 # Передусмотрите возможные ошибки и обработайте их.
 
 
+filename = "students.txt"
 try:
     with open("students.txt", "w") as file:
         file.write("Иван Иванов,1,9\n")
