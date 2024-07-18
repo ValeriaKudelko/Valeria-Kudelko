@@ -9,6 +9,7 @@ disable=
     line-too-long,
     unspecified-encoding,
     unused-variable,
+    duplicate-code,
 
 [REPORTS]
 reports=no
